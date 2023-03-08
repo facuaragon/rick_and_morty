@@ -14,7 +14,7 @@ const Button = styled.button`
    color: white;
    font-weight: bold;
    height: 30px;
-   border: none;
+   border: 0px;
 `
 
 export default function SearchBar(onSearch) {
