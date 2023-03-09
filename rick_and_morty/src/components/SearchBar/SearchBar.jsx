@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 const Input = styled.input`
    border: 2px solid;
@@ -17,15 +18,18 @@ const Button = styled.button`
    border: 0px;
 `
 
-export default function SearchBar(onSearch) {
+function SearchBar({onSearch}) {
+   const [character, setCharacter] = useState('')
+
+   const handleChange = (event) => {
+      setCharacter(event.target.value)
+   }
+
    return (
       <div>
-         <Input type='search' />
-         <Button onClick={(id)=>{
-            onSearch(id)
-            }}
-            >
-            Agregar</Button>
+         <Input type='search' value={character} onChange={handleChange}/>
+         <Button onClick={()=>onSearch(character)}>Agregar</Button>
       </div>
    );
 }
+export default SearchBar;
