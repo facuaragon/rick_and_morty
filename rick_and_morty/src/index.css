@@ -7,7 +7,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://cdn.wccftech.com/wp-content/uploads/2016/09/spacee-scaled.jpg");
+  
+  
+}
+html { 
+  background: url("https://www.wallpaperflare.com/static/789/911/595/rick-and-morty-floating-heads-tv-rick-wallpaper-preview.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 code {

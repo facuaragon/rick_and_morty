@@ -1,5 +1,6 @@
 import styled from "styled-components";
 //import style from "./Card.Mdoule.css"
+import {Link} from "react-router-dom"
 
 const Div = styled.div`
    display: inline-block;
@@ -45,13 +46,15 @@ const Subtitle2 = styled.h2`
 
 `
 
-export default function Card({name, species, gender, image, onClose}) { // => destructuring
+export default function Card({name, species, gender, image, onClose, id}) { // => destructuring
    
    return (
       <Div >
          <CloseButton onClick={onClose}>X</CloseButton>
-         <Subtitle1>{name}</Subtitle1>
-         <img  src={image} alt="" />
+         <Link to={`/detail/${id}`}>
+            <Subtitle1>{name}</Subtitle1>
+         </Link>
+         <img  src={image} alt={name} />
          <Subtitle2>{gender}</Subtitle2>
          <Subtitle2>{species}</Subtitle2>
       </Div>

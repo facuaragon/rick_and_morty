@@ -9,7 +9,7 @@ const Nav = ({onSearch}) => {
                 <Link to="about">About</Link>
             </button>
             <button>
-                <Link to="">Home</Link>
+                <Link to="home">Home</Link>
             </button>
         </nav>
     )

@@ -5,14 +5,15 @@ function Cards({characters, onClose}) {
    
    return (
    <CardsContainer> 
-      {characters.map(({id, name, species, gender, image},index)=>{ // puedo pasar {character}
+      {characters.map(({id, name, species, gender, image})=>{ // puedo pasar {character}
         return (
          <Card 
-            key = {index}
+            key = {id}
             name = {name} // {character.name}
             species = {species} // {character.species}
             gender = {gender} // {character.gender}
             image = {image} // {character.image}
+            id={id}
             onClose = {() => onClose(id)}        
             />
         );
