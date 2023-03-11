@@ -1,10 +1,11 @@
 import './App.css'
 import Cards from './components/Cards/Cards.jsx'
 import Nav from "./components/Nav/Nav.jsx"
-import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import About from './components/About/About.jsx'
 import Detail from './components/Detail/Detail.jsx'
+import Forms from './components/Forms/Forms'
 
     
 function App () {
@@ -40,10 +41,27 @@ function App () {
     )
   }
 
+  //! SEGURIDAD
+  const [access,setAccess] = useState(false);
+  const navigate = useNavigate();
+  const username = "facundo_aragon@hotmail.com";
+  const password = "HolaMundo1";
+
+   const login = (userData) => {
+      if (userData.username===username && userData.password===password){
+          setAccess(true);
+          navigate('/home');
+      } 
+  }
+
+
+  useEffect(() => { !access && navigate('/');}, [access]);
+
   return (
     <div className='App' style={{ padding: '25px' }}>
       <Nav onSearch = {onSearch}/>
       <Routes>
+        <Route path="/" element={<Forms login={login}/>} />
         <Route 
           path="/home" 
           element={<Cards onClose={onClose} characters={characters}/>}
