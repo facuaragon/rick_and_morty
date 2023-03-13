@@ -2,7 +2,7 @@
 import style from "./Forms.module.css"
 import { useState } from "react";
 import {validation} from "./validation.js"
-import {useNavigate} from "react-router-dom"
+
 
 const Forms = ({login}) =>{
     const [userData, setUserData] = useState({ 
@@ -16,8 +16,14 @@ const Forms = ({login}) =>{
     });
 
     const handleInputChange = (event) => {
-        setUserData({...userData, [event.target.name]: event.target.value });
-        setErrors(validation({...userData, [event.target.name]: event.target.value}));
+        const property = event.target.name;
+        const value = event.target.value;
+
+        setUserData({...userData, [property]: value });
+        validation({...userData, [property]: value }, errors, setErrors);
+
+
+        // setErrors(validation({...userData, [property]: value}));
     }
 
     const handleSubmit = (event) => {

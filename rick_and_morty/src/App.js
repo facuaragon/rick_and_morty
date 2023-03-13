@@ -2,7 +2,7 @@ import './App.css'
 import Cards from './components/Cards/Cards.jsx'
 import Nav from "./components/Nav/Nav.jsx"
 import { useState, useEffect } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom'
 import About from './components/About/About.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Forms from './components/Forms/Forms'
@@ -53,13 +53,15 @@ function App () {
           navigate('/home');
       } 
   }
+ //! muestra Nav en todos lados menos en "/"
 
+ const {pathname}=useLocation();
 
   useEffect(() => { !access && navigate('/');}, [access]);
 
   return (
     <div className='App' style={{ padding: '25px' }}>
-      <Nav onSearch = {onSearch}/>
+      {pathname!=="/" && <Nav onSearch = {onSearch}/>}
       <Routes>
         <Route path="/" element={<Forms login={login}/>} />
         <Route 
