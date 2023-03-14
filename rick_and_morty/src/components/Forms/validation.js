@@ -5,7 +5,7 @@ export const validation = (userData, errors, setErrors) => {
 
     //username
     if(!userData.username) setErrors ({...errors, username:"Debe completar este Campo"});
-    else if(userData.username.length>35) setErrors({...errors, username: "El usuario no puede superar los 35 caracteres"});
+    else if(userData.username.length>35) setErrors({...errors, username: "El usuario no debe superar los 35 caracteres"});
     else if(!regexEmail.test(userData.username)) setErrors({...errors, username: "El usuario debe ser un correo electrónico"})
     else setErrors({...errors, username:''});
     //password

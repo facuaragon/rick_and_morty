@@ -56,8 +56,8 @@ function App () {
  //! muestra Nav en todos lados menos en "/"
 
  const {pathname}=useLocation();
-
-  useEffect(() => { !access && navigate('/');}, [access]);
+ 
+ useEffect(() => { !access && navigate('/');}, [access]);
 
   return (
     <div className='App' style={{ padding: '25px' }}>
