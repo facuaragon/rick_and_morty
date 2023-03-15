@@ -62,9 +62,9 @@ function App () {
 
   return (
     <div className='App' style={{ padding: '25px' }}>
-      {pathname!=="/" && <Nav onSearch = {onSearch}/>}
+
+      {pathname==='/' ? <Forms login={login}/> : <Nav onSearch = {onSearch}/>}
       <Routes>
-        <Route path="/" element={<Forms login={login}/>} />
         <Route path="/favorites" element={<Favorites/>}/>
         <Route 
           path="/home" 

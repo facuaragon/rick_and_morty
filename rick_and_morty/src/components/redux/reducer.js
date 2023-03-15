@@ -16,7 +16,9 @@ const rootReducer = (state=initialState, action) =>{  // action = {type, action}
         case DELETE_FAVORITE:
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter((char)=> char.id!==action.payload)
+                myFavorites: state.myFavorites.filter(
+                    (char)=> char.id!==action.payload
+                    ),
             }
 
         default:

@@ -5,7 +5,7 @@ function Cards({characters, onClose}) {
    
    return (
    <CardsContainer> 
-      {characters.map(({id, name, species, gender, image})=>{ // puedo pasar {character}
+      {characters.reverse().map(({id, name, species, gender, image})=>{ // puedo pasar {character}
         return (
          <Card 
             key = {id}
