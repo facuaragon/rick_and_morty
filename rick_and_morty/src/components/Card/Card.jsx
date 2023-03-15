@@ -1,6 +1,11 @@
 import styled from "styled-components";
 //import style from "./Card.Mdoule.css"
 import {Link} from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { deleteFavorite, addFavorite } from "../redux/actions";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Div = styled.div`
    display: inline-block;
@@ -42,14 +47,50 @@ const Subtitle2 = styled.h2`
    font-weight: 300;
    justify-content: space-around;
    margin: auto 20px;
-
-
+`
+const Fav = styled.button`
+   margin: 5px 5px 5px auto;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   width: 40px;
+   border-radius: 5px;
+   background-color: red;
+   color: white;
+   font-weight: bold;
+   font-size: larger;
 `
 
+
 export default function Card({name, species, gender, image, onClose, id}) { // => destructuring
+
+   const myFavorites = useSelector((state)=>state.myFavorites)
+
+   const [isFav, setIsFav] = useState(false);
+   const dispatch = useDispatch();
+
+   const handleFavorite = () => {
+      if (isFav) {
+         setIsFav(false);
+         dispatch(deleteFavorite(id));
+      }
+      else{
+         setIsFav(true);
+         dispatch(addFavorite({name, species, gender, image, onClose, id}));
+      }
+   }
+   useEffect(() => {
+      myFavorites.forEach((fav) => {
+         if (fav.id === id) {
+            setIsFav(true);
+         }
+      });
+   }, [myFavorites]);
+
    
    return (
       <Div >
+         {isFav ? (<Fav onClick={handleFavorite}>❤️</Fav>) : (<Fav onClick={handleFavorite}>🤍</Fav>)}
          <CloseButton onClick={onClose}>X</CloseButton>
          <Link to={`/detail/${id}`}>
             <Subtitle1>{name}</Subtitle1>

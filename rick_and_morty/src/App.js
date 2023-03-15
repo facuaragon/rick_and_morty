@@ -6,6 +6,7 @@ import { Route, Routes, useNavigate, useLocation } from 'react-router-dom'
 import About from './components/About/About.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Forms from './components/Forms/Forms'
+import Favorites from './components/Favorites/Favorites'
 
     
 function App () {
@@ -64,6 +65,7 @@ function App () {
       {pathname!=="/" && <Nav onSearch = {onSearch}/>}
       <Routes>
         <Route path="/" element={<Forms login={login}/>} />
+        <Route path="/favorites" element={<Favorites/>}/>
         <Route 
           path="/home" 
           element={<Cards onClose={onClose} characters={characters}/>}
