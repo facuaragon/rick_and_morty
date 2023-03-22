@@ -16,14 +16,15 @@ function App () {
   //! Event handlers
 
   const onSearch = (id) => {
-    const URL_BASE = "https://be-a-rym.up.railway.app/api";
-    const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
-
+    
     if(characters.find(char=>char.id===id)){
       return alert("esta tarjeta ya se esta mostrando");
     }
-
-    fetch(`${URL_BASE}/character/${id}?key=${KEY}`)
+    
+    // const URL_BASE = "https://be-a-rym.up.railway.app/api";
+    // const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
+    // fetch(`${URL_BASE}/character/${id}?key=${KEY}`)
+    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
     .then(response=>response.json())
     .then(data=>{
       if(data.name ){
