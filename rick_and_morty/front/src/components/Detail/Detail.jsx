@@ -32,9 +32,10 @@ const Detail = () => {
       //! AXIOS
 
       useEffect(()=>{
-        const URL_BASE = "https://be-a-rym.up.railway.app/api";
-        const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
-        axios (`${URL_BASE}/character/${detailId}?key=${KEY}`).then((response)=>setCharacter(response.data));
+        // const URL_BASE = "https://be-a-rym.up.railway.app/api";
+        // const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
+        // axios (`${URL_BASE}/character/${detailId}?key=${KEY}`).then((response)=>setCharacter(response.data));
+        axios (`http://localhost:3001/rickandmorty/detail/${detailId}`).then((response)=>setCharacter(response.data));
       },[]);
       
 

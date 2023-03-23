@@ -38,12 +38,12 @@ const Forms = ({login}) =>{
         <form onSubmit={handleSubmit}>
             <div className={style.userBox}>
                 <label htmlFor="username">Username:</label>
-                <input type="text" name="username" value={userData.username} onChange={handleInputChange} />
+                <input type="text" name="username" value={userData.username} onChange={handleInputChange}/>
                 {errors.username && <p className={style.warning}>{errors.username}</p>}
             </div>
             <div className={style.userBox}>
                 <label htmlFor="password">Password:</label>
-                <input type="password" name="password" value={userData.password} onChange={handleInputChange} />
+                <input type="password" name="password" value={userData.password} onChange={handleInputChange}/>
                 {errors.password && <p className={style.warning} >{errors.password}</p>}
             </div>
             <button className={style.ingresar}>Ingresar</button>

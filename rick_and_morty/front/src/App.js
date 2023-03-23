@@ -24,7 +24,7 @@ function App () {
     // const URL_BASE = "https://be-a-rym.up.railway.app/api";
     // const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
     // fetch(`${URL_BASE}/character/${id}?key=${KEY}`)
-    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
+    fetch(`http://localhost:3001/rickandmorty/onsearch/${id}`)
     .then(response=>response.json())
     .then(data=>{
       if(data.name ){
@@ -46,8 +46,8 @@ function App () {
   //! SEGURIDAD
   const [access,setAccess] = useState(false);
   const navigate = useNavigate();
-  const username = "facundo_aragon@hotmail.com";
-  const password = "HolaMundo1";
+  const username = "f@hotmail.com";
+  const password = "123456";
 
    const login = (userData) => {
       if (userData.username===username && userData.password===password){
@@ -59,13 +59,14 @@ function App () {
 
  const {pathname}=useLocation();
  
- useEffect(() => { !access && navigate('/');}, [access]);
+//  useEffect(() => { !access && navigate('/');}, [access]);
 
   return (
     <div className='App' style={{ padding: '25px' }}>
 
       {pathname==='/' ? <Forms login={login}/> : <Nav onSearch = {onSearch}/>}
       <Routes>
+        {/* <Route path='/' element={<Forms login={login}/>}/> */}
         <Route path="/favorites" element={<Favorites/>}/>
         <Route 
           path="/home" 
