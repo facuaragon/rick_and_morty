@@ -1,6 +1,7 @@
-import { ADD_FAVORITE, DELETE_FAVORITE, SHOW_FAVORITES } from "./action-types";
+import { ADD_FAVORITE, DELETE_FAVORITE, SHOW_FAVORITES, CLEAN_DETAIL, GET_CHARACTER_DETAIL } from "./action-types";
 const initialState = {
     myFavorites: [],
+    characterDetail: {}
 };
 
 const rootReducer = (state=initialState, action) =>{  // action = {type, action}
@@ -25,6 +26,18 @@ const rootReducer = (state=initialState, action) =>{  // action = {type, action}
             return {
                 ...state,
                 myFavorites: action.payload
+            }
+        
+        case GET_CHARACTER_DETAIL:
+            return {
+                ...state,
+                characterDetail: action.payload
+            }
+
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                characterDetail: {}
             }
 
         default:

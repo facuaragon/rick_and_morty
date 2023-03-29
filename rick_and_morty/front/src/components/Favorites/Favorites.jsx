@@ -1,15 +1,15 @@
-import { useSelector } from "react-redux"; 
+import { useSelector, useDispatch } from "react-redux"; 
+import { useEffect } from "react";
 import Card from "../Card/Card";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { showfavorites } from "../redux/actions";
+
 
 const Favorites = () => { 
-    //const favorites = useSelector(state=>state.myFavorites)
-    //const favorites = 
-    const [favorites, setFavorites] = useState([]);
+    const favorites = useSelector(state=>state.myFavorites)
+    const dispatch = useDispatch();
     useEffect(()=>{
-        axios.get(`http://localhost:3001/rickandmorty/fav`).then((response)=>setFavorites(response.data));
-      },[]);
+        dispatch(showfavorites())
+    },[])
 
     return (
         <div>

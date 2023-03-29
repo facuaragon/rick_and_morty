@@ -1,63 +1,24 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
-
-
+import useCharacter from "../../hooks/useCharacter";
 
 const Detail = () => {
+  const character = useCharacter();
 
-    const {detailId} = useParams();
-    const [character, setCharacter] = useState({});
-
-    // useEffect(() => {
-    //     const URL_BASE = "https://be-a-rym.up.railway.app/api";
-    //     const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
-
-    //     fetch(`${URL_BASE}/character/${detailId}?key=${KEY}`)
-    //       .then((response) => response.json())
-    //       .then((char) => {
-    //         if (char.name) {
-    //           setCharacter(char);
-    //         } else {
-    //           window.alert("No hay personajes con ese ID");
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         window.alert("No hay personajes con ese ID");
-    //       });
-    //     return setCharacter({});
-    //   }, [detailId]);
-
-      //! AXIOS
-
-      useEffect(()=>{
-        // const URL_BASE = "https://be-a-rym.up.railway.app/api";
-        // const KEY = "f34d1ed75dfb.cff0824d244e69fdada3";
-        // axios (`${URL_BASE}/character/${detailId}?key=${KEY}`).then((response)=>setCharacter(response.data));
-        axios (`http://localhost:3001/rickandmorty/detail/${detailId}`).then((response)=>setCharacter(response.data));
-      },[]);
-      
-
-    return (
-        <div>
-          {character.name ? (
-          <>
-              <button>
-                  <Link to="/home">Home</Link>
-              </button>
-              <h1>{character?.name}</h1> 
-              <p>{character?.status}</p>
-              <p>{character?.species}</p>
-              <p>{character?.gender}</p>
-              <p>{character?.origin?.name}</p>
-              <img src={character?.image} alt={character?.name}/>
-              </>
-              ) : (
-                <h3>Loanding...</h3>
-              )}            
-        </div>
-    );
-}
+  return (
+    <div>
+      {character.name ? (
+        <>
+          <h2>{character.name}</h2>
+          <p>{character.status}</p>
+          <p>{character.species}</p>
+          <p>{character.gender}</p>
+          <p>{character.origin?.name}</p>
+          <img src={character.image} alt="img" />
+        </>
+      ) : (
+        <h3>Loading...</h3>
+      )}
+    </div>
+  );
+};
 
 export default Detail;

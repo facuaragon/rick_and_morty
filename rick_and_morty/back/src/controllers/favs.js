@@ -1,7 +1,7 @@
 let favs = require("../utils/favs");
 
 const postFav = (req, res) => {
-    favs = favs.filter((fav)=> fav.id != req.body.id)
+    // favs = favs.filter((fav)=> fav.id != req.body.id)
     favs.push(req.body)
     res.status(201).json({status: "ok"});
 }
