@@ -5,12 +5,12 @@ import { showfavorites } from "../redux/actions";
 
 
 const Favorites = () => { 
-    const favorites = useSelector(state=>state.myFavorites)
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(showfavorites())
     },[])
-
+    
+    const favorites = useSelector(state=>state.myFavorites)
     return (
         <div>
             {
