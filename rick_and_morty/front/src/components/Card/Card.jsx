@@ -2,9 +2,10 @@ import styled from "styled-components";
 //import style from "./Card.Mdoule.css"
 import {Link} from "react-router-dom"
 import { connect } from "react-redux";
-import { deleteFavorite, addFavorite } from "../redux/actions";
+import { deleteFavorite, addFavorite, showfavorites } from "../redux/actions";
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 
 const Div = styled.div`
    display: inline-block;
@@ -62,11 +63,37 @@ const Fav = styled.button`
 `
 
 
-function Card({name, species, gender, image, onClose, id, myFavorites, addFavorite, deleteFavorite}) { // => destructuring
+function Card({name, species, gender, image, onClose, id, myFavorites}) { // => destructuring
 
    
 
    const [isFav, setIsFav] = useState(false);
+
+
+   //! revisar para la funcion favoritos del express
+   const addFavorite = async (character)=>{
+
+      try {
+         const response = await axios.post("http://localhost:3001/rickandmorty/fav",character)
+         console.log("ok")
+      } catch (error) {
+         console.log(error);
+      }
+      
+   }
+
+   const deleteFavorite = async (id)=>{
+
+      try {
+         const response = axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+         console.log("ok")
+         
+      } catch (error) {
+         console.log("error")
+
+      }
+   }
+
    
    const handleFavorite = () => {
       if (isFav) {
@@ -75,7 +102,8 @@ function Card({name, species, gender, image, onClose, id, myFavorites, addFavori
       }
       else{
          setIsFav(true);
-         addFavorite({name, species, gender, image, onClose, id, myFavorites, addFavorite, deleteFavorite});
+         addFavorite({name, species, gender, image, id});
+     
       }
    }
    
@@ -105,8 +133,8 @@ function Card({name, species, gender, image, onClose, id, myFavorites, addFavori
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      addFavorite: (character)=>{dispatch(addFavorite(character))},
-      deleteFavorite: (id)=>{dispatch(deleteFavorite(id))}
+      // addFavorite: (character)=>{dispatch(addFavorite(character))},
+      // deleteFavorite: (id)=>{dispatch(deleteFavorite(id))}
    }
 }
 const mapStateToProps = (state) =>{
