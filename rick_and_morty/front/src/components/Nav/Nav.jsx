@@ -12,13 +12,13 @@ const Nav = ({onSearch}) => {
             <nav>
                 <SearchBar onSearch={onSearch}/>
                 <button>
-                    <Link to="about">About</Link>
+                    <Link to="home">Home</Link>
                 </button>
                 <button>
                     <Link to="favorites">Favorites</Link>
                 </button>
                 <button>
-                    <Link to="home">Home</Link>
+                    <Link to="about">About</Link>
                 </button>
                 <button>
                     <Link to="/">Logout</Link>

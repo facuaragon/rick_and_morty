@@ -63,8 +63,8 @@ const Fav = styled.button`
 `
 
 
-function Card({name, species, gender, image, onClose, id, myFavorites}) { // => destructuring
-
+function Card({name, species, gender, origin, status, image, onClose, id, myFavorites}) { // => destructuring
+   
    const [isFav, setIsFav] = useState(false);
    const dispatch = useDispatch();
 
@@ -88,7 +88,7 @@ function Card({name, species, gender, image, onClose, id, myFavorites}) { // => 
       }
       else{
          setIsFav(true);
-         addFavorite({name, species, gender, image, id});
+         addFavorite({name, species, gender, origin, image, status, id});
       }
    }
    
